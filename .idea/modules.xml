@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Mental Counting.iml" filepath="$PROJECT_DIR$/.idea/modules/Mental Counting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Mental_Counting.iml" filepath="$PROJECT_DIR$/.idea/modules/Mental_Counting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Mental_Counting.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Mental_Counting.app.iml" />
     </modules>
   </component>
 </project>
