@@ -15,16 +15,16 @@
         tools:layout_editor_absoluteY="0dp">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/play_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="BUTT" />
+            android:text="Play" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/score_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ON" />
+            android:text="Score" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
