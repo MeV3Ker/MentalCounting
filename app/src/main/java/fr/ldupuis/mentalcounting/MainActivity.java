@@ -2,6 +2,7 @@ package fr.ldupuis.mentalcounting;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,8 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void openScore() {
+
     }
 
+
     private void openMentalCounting() {
+
+        Intent open_MentalCounting = new Intent(this, MentalCounting.class);
+        startActivity(open_MentalCounting);
+
     }
 }
