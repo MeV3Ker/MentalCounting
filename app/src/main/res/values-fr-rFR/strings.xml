@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">Calcul Mental</string>
     <string name="play">Jouer</string>
+    <string name="number_of_operations"> Nombre d\'opération(s): XX</string>
+    <string name="success_rate">Taux de réussite: XXX%</string>
+    <string name="last_correct_operation">Dernière opération correcte: XXXXXXXXXX</string>
+    <string name="return_to_last">Retour à la dernière page</string>
 </resources>

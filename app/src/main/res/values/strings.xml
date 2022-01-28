@@ -2,4 +2,8 @@
     <string name="app_name">Mental Counting</string>
     <string name="play">Play</string>
     <string name="score" translatable="false">Scores</string>
+    <string name="number_of_operations">Number of operations: XX</string>
+    <string name="success_rate">Success rate: XXX%</string>
+    <string name="last_correct_operation">Last correct operation: XXXXXXXXXX</string>
+    <string name="return_to_last">Return to last page</string>
 </resources>
