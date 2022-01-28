@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         scoreButton.setOnClickListener(view-> openScore());
     }
 
+
     private void openScore() {
     }
 
