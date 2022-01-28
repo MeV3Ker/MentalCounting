@@ -6,4 +6,9 @@
     <string name="success_rate">Success rate: XXX%</string>
     <string name="last_correct_operation">Last correct operation: XXXXXXXXXX</string>
     <string name="return_to_last">Return to last page</string>
+    <string name="operation"> Operation:</string>
+    <string name="correct_answer">Correct answer !</string>
+    <string name="incorrect_answer">Incorrect answer !</string>
+    <string name="submit">Submit</string>
+    <string name="main_menu">Main menu</string>
 </resources>

@@ -23,7 +23,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sample text" />
+            android:text="@string/operation" />
 
         <EditText
             android:id="@+id/editTextNumber"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Correct"
+                android:text="@string/correct_answer"
                 android:textColor="@android:color/holo_green_dark"
                 android:visibility="visible" />
 
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Incorrect"
+                android:text="@string/incorrect_answer"
                 android:textColor="#E10E0E"
                 android:visibility="visible" />
         </LinearLayout>
@@ -70,13 +70,13 @@
                 android:id="@+id/submit_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Submit" />
+                android:text="@string/submit" />
 
             <Button
                 android:id="@+id/main_menu_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Main menu" />
+                android:text="@string/main_menu" />
         </LinearLayout>
 
     </LinearLayout>
