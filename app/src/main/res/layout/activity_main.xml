@@ -18,13 +18,13 @@
             android:id="@+id/play_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Play" />
+            android:text="@string/play" />
 
         <Button
             android:id="@+id/score_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Score" />
+            android:text="@string/score" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

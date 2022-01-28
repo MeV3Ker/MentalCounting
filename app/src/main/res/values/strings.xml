@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mental Counting</string>
+    <string name="play">Play</string>
+    <string name="score" translatable="false">Scores</string>
 </resources>
