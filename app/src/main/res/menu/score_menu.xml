@@ -2,6 +2,6 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Score" />
-    <item android:title="Clear Scores" />
+    <item android:title="@string/menu_score" />
+    <item android:title="@string/clear_scores" />
 </menu>

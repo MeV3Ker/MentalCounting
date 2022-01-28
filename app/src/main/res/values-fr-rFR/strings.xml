@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Main menu -->
     <string name="app_name">Calcul Mental</string>
     <string name="play">Jouer</string>
+
+    <!-- Score page -->
     <string name="number_of_operations"> Nombre d\'opération(s): XX</string>
     <string name="success_rate">Taux de réussite: XXX%</string>
     <string name="last_correct_operation">Dernière opération correcte: XXXXXXXXXX</string>
     <string name="return_to_last">Retour à la dernière page</string>
+
+    <!-- Mental Counting page -->
     <string name="operation">Calcul:</string>
     <string name="correct_answer">Bonne réponse !</string>
     <string name="incorrect_answer">Mauvaise réponse !</string>
     <string name="submit">Valider</string>
+
+    <!-- Menu -->
     <string name="main_menu">Menu principal</string>
+    <string name="clear_scores">Réinitialiser les scores</string>
 </resources>
