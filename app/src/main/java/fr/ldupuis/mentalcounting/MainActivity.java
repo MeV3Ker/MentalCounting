@@ -15,9 +15,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Init button
         Button playButton = findViewById(R.id.play_button);
         Button scoreButton = findViewById(R.id.score_button);
-        
+
+        //Init button listener
         playButton.setOnClickListener(view -> openMentalCounting());
         scoreButton.setOnClickListener(view-> openScore());
     }

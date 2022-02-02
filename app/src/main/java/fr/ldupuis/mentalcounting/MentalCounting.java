@@ -17,9 +17,10 @@ public class MentalCounting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mental_counting);
 
+        //init button
         Button mainMenuButton = findViewById(R.id.main_menu_button);
 
-
+        //init button listener
         mainMenuButton.setOnClickListener(view -> openMainMenu());
     }
 
@@ -28,7 +29,7 @@ public class MentalCounting extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.maneBar_score) {
+        if (id == R.id.menuBar_score) {
             Intent intent = new Intent(this, Score.class);
             startActivity(intent);
         }
