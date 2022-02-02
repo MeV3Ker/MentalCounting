@@ -13,6 +13,9 @@
             android:name=".MentalCounting"
             android:exported="false" />
         <activity
+            android:name=".Score"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
