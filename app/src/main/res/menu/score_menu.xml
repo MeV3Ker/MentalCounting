@@ -2,6 +2,10 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/menu_score" />
-    <item android:title="@string/clear_scores" />
+    <item
+        android:id="@+id/maneBar_score"
+        android:title="@string/menu_score" />
+    <item
+        android:id="@+id/menuBar_clear"
+        android:title="@string/clear_scores" />
 </menu>

@@ -19,19 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/operation" />
-
-        <EditText
-            android:id="@+id/editTextNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -40,24 +27,43 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/display_Operation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/operation"
+                tools:visibility="visible" />
+
+            <EditText
+                android:id="@+id/submit_Operation_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:minHeight="48dp"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/display_correct_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/correct_answer"
                 android:textColor="@android:color/holo_green_dark"
-                android:visibility="visible" />
+                tools:visibility="visible" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/display_incorrect_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/incorrect_answer"
-                android:textColor="#E10E0E"
-                android:visibility="visible" />
+                android:textColor="@android:color/holo_red_dark"
+                tools:visibility="visible" />
+
         </LinearLayout>
 
         <LinearLayout

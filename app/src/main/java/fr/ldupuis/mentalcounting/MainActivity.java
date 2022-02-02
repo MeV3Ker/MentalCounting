@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void openScore() {
-
+        Intent openScore = new Intent(this, Score.class);
+        startActivity(openScore);
     }
 
 
@@ -32,6 +33,5 @@ public class MainActivity extends AppCompatActivity {
 
         Intent open_MentalCounting = new Intent(this, MentalCounting.class);
         startActivity(open_MentalCounting);
-
     }
 }

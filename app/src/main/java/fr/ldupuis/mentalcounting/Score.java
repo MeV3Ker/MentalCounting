@@ -11,7 +11,13 @@ public class Score extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+
+        Button previousButton = findViewById(R.id.previous_button);
+        previousButton.setOnClickListener(view -> previousPage());
     }
+
+    private void previousPage(){finish();}
 }

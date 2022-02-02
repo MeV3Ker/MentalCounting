@@ -10,8 +10,10 @@
         android:layout_height="729dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,19 +23,19 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/display_number_operation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/number_of_operations" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/display_succes_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/success_rate" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/displayLast_correct_operation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/last_correct_operation" />
@@ -46,10 +48,16 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/previous_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/return_to_last" />
+
+            <Button
+                android:id="@+id/clear_score_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/clear_scores" />
         </LinearLayout>
 
     </LinearLayout>
