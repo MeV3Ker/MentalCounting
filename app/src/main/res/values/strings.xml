@@ -20,4 +20,5 @@
     <!-- Menu -->
     <string name="menu_score" translatable="false">Scores</string>
     <string name="clear_scores">Clear Scores</string>
+    <string name="answer_hint" translatable="false">123</string>
 </resources>
