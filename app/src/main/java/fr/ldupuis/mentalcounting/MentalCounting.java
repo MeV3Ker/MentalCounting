@@ -63,7 +63,7 @@ public class MentalCounting extends AppCompatActivity {
         TextView incorrect_D = findViewById(R.id.display_incorrect_answer);
 
         //operation generator
-        
+
 
         //user input
         EditText input = findViewById(R.id.submit_Operation_answer);
