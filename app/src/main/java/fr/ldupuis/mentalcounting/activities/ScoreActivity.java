@@ -1,4 +1,4 @@
-package fr.ldupuis.mentalcounting;
+package fr.ldupuis.mentalcounting.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,7 +6,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.Button;
 
-public class Score extends AppCompatActivity {
+import fr.ldupuis.mentalcounting.R;
+
+public class ScoreActivity extends AppCompatActivity {
 
 
     @Override

@@ -1,12 +1,12 @@
-package fr.ldupuis.mentalcounting;
+package fr.ldupuis.mentalcounting.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.widget.Button;
+
+import fr.ldupuis.mentalcounting.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void openScore() {
-        Intent openScore = new Intent(this, Score.class);
+        Intent openScore = new Intent(this, ScoreActivity.class);
         startActivity(openScore);
     }
 

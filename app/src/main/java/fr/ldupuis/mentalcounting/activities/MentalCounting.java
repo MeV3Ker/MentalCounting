@@ -1,17 +1,18 @@
-package fr.ldupuis.mentalcounting;
+package fr.ldupuis.mentalcounting.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import fr.ldupuis.mentalcounting.R;
 
 public class MentalCounting extends AppCompatActivity {
 
@@ -33,7 +34,7 @@ public class MentalCounting extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.menuBar_score) {
-            Intent intent = new Intent(this, Score.class);
+            Intent intent = new Intent(this, ScoreActivity.class);
             startActivity(intent);
         }
 
