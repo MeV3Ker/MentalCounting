@@ -15,13 +15,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Init button
+        //Initialisation Boutons
         Button playButton = findViewById(R.id.play_button);
         Button scoreButton = findViewById(R.id.score_button);
 
-        //Init button listener
-        playButton.setOnClickListener(view -> openMentalCounting());
-        scoreButton.setOnClickListener(view-> openScore());
+        //Initialisation Listener boutons
+        playButton.setOnClickListener(view -> openDifficulty());
+        scoreButton.setOnClickListener(view -> openScore());
     }
 
 
@@ -30,10 +30,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(openScore);
     }
 
+    private void openDifficulty() {
+        Intent open_Difficulty = new Intent(this, DifficultyActivity.class);
+        startActivity(open_Difficulty);
 
-    private void openMentalCounting() {
-
-        Intent open_MentalCounting = new Intent(this, MentalCounting.class);
-        startActivity(open_MentalCounting);
     }
 }

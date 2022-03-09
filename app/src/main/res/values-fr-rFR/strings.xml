@@ -16,7 +16,14 @@
     <string name="incorrect_answer">Mauvaise réponse !</string>
     <string name="submit">Valider</string>
 
+    <!-- Difficulty page -->
+
+    <string name="easy_mode">Mode Facile</string>
+    <string name="hard_mode">Mode Difficile</string>
+
     <!-- Menu -->
     <string name="main_menu">Menu principal</string>
     <string name="clear_scores">Réinitialiser les scores</string>
+
+
 </resources>

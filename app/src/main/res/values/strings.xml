@@ -10,6 +10,10 @@
     <string name="last_correct_operation">Last correct operation: XXXXXXXXXX</string>
     <string name="return_to_last">Return to last page</string>
 
+    <!-- Difficulty page -->
+    <string name="easy_mode">Easy Mode</string>
+    <string name="hard_mode">Hard Mode</string>
+
     <!-- Mental Counting page -->
     <string name="operation"> Operation: XXX</string>
     <string name="correct_answer">Correct answer !</string>
@@ -21,4 +25,6 @@
     <string name="menu_score" translatable="false">Scores</string>
     <string name="clear_scores">Clear Scores</string>
     <string name="answer_hint" translatable="false">123</string>
+
+
 </resources>

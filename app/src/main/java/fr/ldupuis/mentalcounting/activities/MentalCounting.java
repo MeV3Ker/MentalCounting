@@ -9,8 +9,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import fr.ldupuis.mentalcounting.R;
 
@@ -20,6 +18,10 @@ public class MentalCounting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mental_counting);
+
+        //Recuperation Extra
+        Intent intent = getIntent();
+        boolean is_hard = intent.getBooleanExtra("IS_HARD", false);
 
         //init button
         Button mainMenuButton = findViewById(R.id.main_menu_button);
@@ -55,27 +57,4 @@ public class MentalCounting extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void Submit() {
-        //submit button
-        Button submitButton = findViewById(R.id.submit_button);
-
-        //in.correct tags
-        TextView correct_D = findViewById(R.id.display_correct_answer);
-        TextView incorrect_D = findViewById(R.id.display_incorrect_answer);
-
-        //operation generator
-
-
-        //user input
-        EditText input = findViewById(R.id.submit_Operation_answer);
-        String answer = input.getText().toString();
-
-        //init button listener
-        submitButton.setOnClickListener(view -> {
-            if (answer == operation.result)
-                incorrect_D.setVisibility(TextView.VISIBLE);
-            else
-                correct_D.setVisibility(TextView.VISIBLE);
-        });
-    }
 }
