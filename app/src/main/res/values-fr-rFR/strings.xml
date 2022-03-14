@@ -15,6 +15,7 @@
     <string name="correct_answer">Bonne réponse !</string>
     <string name="incorrect_answer">Mauvaise réponse !</string>
     <string name="submit">Valider</string>
+    <string name="next_button">Prochain Calcul</string>
 
     <!-- Difficulty page -->
 
@@ -24,6 +25,7 @@
     <!-- Menu -->
     <string name="main_menu">Menu principal</string>
     <string name="clear_scores">Réinitialiser les scores</string>
+
 
 
 </resources>

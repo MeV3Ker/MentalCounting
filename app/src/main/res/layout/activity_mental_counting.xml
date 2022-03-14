@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/operation"
+                android:textSize="24sp"
                 tools:visibility="visible" />
 
             <EditText
@@ -34,7 +35,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="@string/answer_hint"
-                android:inputType="number"
+                android:inputType="numberSigned"
                 android:minHeight="48dp"
                 tools:visibility="visible" />
 
@@ -45,7 +46,7 @@
                 android:gravity="center"
                 android:text="@string/correct_answer"
                 android:textColor="@color/holo_green"
-                tools:visibility="visible" />
+                tools:visibility="invisible" />
 
             <TextView
                 android:id="@+id/display_incorrect_answer"
@@ -54,7 +55,7 @@
                 android:gravity="center"
                 android:text="@string/incorrect_answer"
                 android:textColor="@color/holo_red"
-                tools:visibility="visible" />
+                tools:visibility="invisible" />
 
         </LinearLayout>
 
@@ -69,6 +70,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/submit" />
+
+            <Button
+                android:id="@+id/next_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/next_button"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/main_menu_button"

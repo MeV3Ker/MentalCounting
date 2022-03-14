@@ -1,12 +1,14 @@
 package fr.ldupuis.mentalcounting.models;
 
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
 import fr.ldupuis.mentalcounting.services.hardOperation.HardOperationGenerationService;
 
-public class HardOperationModel{
+public class HardOperationModel {
 
-    private EasyOperationModel easyOperationModel;
+    private final EasyOperationModel easyOperationModel;
     private final int thirdOperationMember;
     private final String secondOperator;
 
@@ -18,6 +20,18 @@ public class HardOperationModel{
         this.secondOperator = hardOperation.getSecondOperator();
     }
 
+    public int getFirstOperationMember(){
+        return easyOperationModel.getFirstOperationMember();
+    }
+
+    public int getSecondOperationMember(){
+        return easyOperationModel.getSecondOperationMember();
+    }
+
+    public String getFirstOperator(){
+        return easyOperationModel.getOperator();
+    }
+
     public int getThirdOperationMember() {
         return thirdOperationMember;
     }
@@ -25,6 +39,8 @@ public class HardOperationModel{
     public String getSecondOperator(){
         return  secondOperator;
     }
+
+    public EasyOperationModel getEasyOperationModel() {return easyOperationModel; };
 
     @NonNull
     @Override

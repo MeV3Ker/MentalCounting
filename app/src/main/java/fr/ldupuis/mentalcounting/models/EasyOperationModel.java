@@ -28,12 +28,5 @@ public class EasyOperationModel {
         return operator;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        String operation;
-        operation = getFirstOperationMember() + getOperator() + getSecondOperationMember();
-        return operation;
-    }
 }
 
