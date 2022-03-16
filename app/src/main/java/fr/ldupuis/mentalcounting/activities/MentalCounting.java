@@ -1,5 +1,7 @@
 package fr.ldupuis.mentalcounting.activities;
 
+import static fr.ldupuis.mentalcounting.services.easyOperation.EasyOperationSolutionService.compute;
+import static fr.ldupuis.mentalcounting.services.hardOperation.HardOperationSolutionService.computeHard;
 import static fr.ldupuis.mentalcounting.services.hardOperation.HardOperationSolutionService.isEqual;
 import static fr.ldupuis.mentalcounting.services.easyOperation.EasyOperationSolutionService.isEqual;
 
@@ -19,10 +21,9 @@ import android.widget.TextView;
 import fr.ldupuis.mentalcounting.R;
 import fr.ldupuis.mentalcounting.models.EasyOperationModel;
 import fr.ldupuis.mentalcounting.models.HardOperationModel;
+import fr.ldupuis.mentalcounting.models.exceptions.EmptyResultException;
 import fr.ldupuis.mentalcounting.services.easyOperation.EasyOperationGenerationService;
-import fr.ldupuis.mentalcounting.services.easyOperation.EasyOperationSolutionService;
 import fr.ldupuis.mentalcounting.services.hardOperation.HardOperationGenerationService;
-import fr.ldupuis.mentalcounting.services.hardOperation.HardOperationSolutionService;
 
 public class MentalCounting extends AppCompatActivity {
     private TextView displayOperation;
@@ -49,6 +50,8 @@ public class MentalCounting extends AppCompatActivity {
 
         TextView incorrectMessage = findViewById(R.id.display_incorrect_answer);
         incorrectMessage.setVisibility(View.GONE);
+        TextView errorMessage = findViewById(R.id.error_message);
+        errorMessage.setVisibility(View.GONE);
 
         //init button
         Button mainMenuButton = findViewById(R.id.main_menu_button);
@@ -68,44 +71,73 @@ public class MentalCounting extends AppCompatActivity {
             HardOperationModel generatedHardOperationModel = new HardOperationModel(generatedHardOperation);
             writeHardOperationText(generatedHardOperationModel);
 
-            submitAnswerButton.setOnClickListener(view -> hardResultControl(generatedHardOperationModel, getResult(submittedResult) ));
+            submitAnswerButton.setOnClickListener(view -> hardResultControl(generatedHardOperationModel, getStringResult(submittedResult) ));
         }
         else{
             EasyOperationGenerationService generatedEasyOperation = new EasyOperationGenerationService();
             EasyOperationModel generatedEasyOperationModel = new EasyOperationModel(generatedEasyOperation);
             writeEasyOperationText(generatedEasyOperationModel);
 
-            submitAnswerButton.setOnClickListener(view -> easyResultControl(generatedEasyOperationModel, getResult(submittedResult)));
+            submitAnswerButton.setOnClickListener(view -> easyResultControl(generatedEasyOperationModel, getStringResult(submittedResult)));
         }
 
 
     }
 
 
-    //Récupère le résultat saisi par l'utilisateur et le converti en entier
-    private int getResult(TextView submittedResult) {
-        int resultValue;
+    //Récupère le résultat saisi par l'utilisateur et le converti en String
+    private String getStringResult(TextView submittedResult) {
         String resultToString;
 
-        resultToString = String.valueOf(submittedResult.getText());
-        resultValue = Integer.parseInt(resultToString);
+        resultToString = String.valueOf(submittedResult.getText());;
 
-        return resultValue;
+        return resultToString;
     }
 
     //Vérifie si le résultat est bon
-    private void hardResultControl(HardOperationModel hardModel, int result) {
-       affichageMessage(isEqual(hardModel, result));
+    private void hardResultControl(HardOperationModel hardModel, String resultString) {
+        int correctAnswer = computeHard(hardModel);
+
+        try {
+            affichageMessage(isEqual(hardModel, resultString), correctAnswer);
+        }catch (EmptyResultException e) {
+            Button submit = findViewById(R.id.submit_button);
+            Button nextButton = findViewById(R.id.next_button);
+
+            TextView errorMessage = findViewById(R.id.error_message);
+            errorMessage.setText(e.getMessage());
+            errorMessage.setVisibility(View.VISIBLE);
+
+            submit.setVisibility(View.GONE);
+            nextButton.setVisibility(View.VISIBLE);
+
+        }
     }
 
     //Vérifie si le résultat est bon
-    private void easyResultControl(EasyOperationModel easyModel, int result){
-        affichageMessage(isEqual(easyModel, result));
+    private void easyResultControl(EasyOperationModel easyModel, String resultString){
+
+        int correctAnswer = compute(easyModel);
+
+        try {
+            affichageMessage(isEqual(easyModel, resultString), correctAnswer);
+        }catch (EmptyResultException e) {
+            Button submit = findViewById(R.id.submit_button);
+            Button nextButton = findViewById(R.id.next_button);
+
+            TextView errorMessage = findViewById(R.id.error_message);
+            errorMessage.setText(e.getMessage());
+            errorMessage.setVisibility(View.VISIBLE);
+
+            submit.setVisibility(View.GONE);
+            nextButton.setVisibility(View.VISIBLE);
+
+        }
 
     }
 
     //Affiche les messages d'erreur/reussite et les boutons pour passer au calcul suivant
-    private void affichageMessage(boolean answerCorrect){
+    private void affichageMessage(boolean answerCorrect, int correctResult){
 
         Button submit = findViewById(R.id.submit_button);
         Button nextButton = findViewById(R.id.next_button);
@@ -117,8 +149,12 @@ public class MentalCounting extends AppCompatActivity {
 
         if(answerCorrect){
             correctMessage.setVisibility(View.VISIBLE);
+
         }
         else{
+
+            String text = getString(R.string.incorrect_answer, correctResult);
+            incorrectMessage.setText(text);
             incorrectMessage.setVisibility(View.VISIBLE);
         }
 
@@ -129,6 +165,8 @@ public class MentalCounting extends AppCompatActivity {
         Intent nextOperation = new Intent(this, MentalCounting.class);
         nextOperation.putExtra("IS_HARD", difficulty);
         startActivity(nextOperation);
+
+        finish();
     }
 
 
@@ -136,6 +174,7 @@ public class MentalCounting extends AppCompatActivity {
     private void openMainMenu() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+
     }
 
     //Ecrit une opération à 2 membres

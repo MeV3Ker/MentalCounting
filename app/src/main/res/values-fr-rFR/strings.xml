@@ -13,9 +13,11 @@
     <!-- Mental Counting page -->
     <string name="operation">Calcul:</string>
     <string name="correct_answer">Bonne réponse !</string>
-    <string name="incorrect_answer">Mauvaise réponse !</string>
+    <string name="incorrect_answer">Mauvaise réponse ! La bonne réponse est %1$d</string>
     <string name="submit">Valider</string>
     <string name="next_button">Prochain Calcul</string>
+
+
 
     <!-- Difficulty page -->
 

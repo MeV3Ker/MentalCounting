@@ -17,18 +17,18 @@
     <!-- Mental Counting page -->
     <string name="operation"></string>
     <string name="correct_answer">Correct answer !</string>
-    <string name="incorrect_answer">Incorrect answer !</string>
+    <string name="incorrect_answer">Incorrect answer ! Correct answer is %1$d !</string>
     <string name="submit">Submit</string>
     <string name="next_button">Next Calculation</string>
     <string name="main_menu">Main menu</string>
     <string name="easy_operationTemplate" translatable="false">%1$d %2$s %3$d</string>
     <string name="hard_operationTemplate" translatable="false">%1$d %2$s %3$d %4$s %5$d</string>
+    <string name="error_message" translatable="false">%1$s</string>
 
     <!-- Menu -->
     <string name="menu_score" translatable="false">Scores</string>
     <string name="clear_scores">Clear Scores</string>
     <string name="answer_hint" translatable="false">123</string>
-
 
 
 </resources>

@@ -49,6 +49,16 @@
                 tools:visibility="invisible" />
 
             <TextView
+                android:id="@+id/error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/error_message"
+                android:textColor="@color/holo_red"
+                />
+
+
+            <TextView
                 android:id="@+id/display_incorrect_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
