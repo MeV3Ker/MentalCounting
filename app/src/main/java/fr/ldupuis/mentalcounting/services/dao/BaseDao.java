@@ -8,10 +8,10 @@ import android.provider.BaseColumns;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.ldupuis.mentalcounting.models.entities.BaseEntity;
+import fr.ldupuis.mentalcounting.models.BaseEntity;
 
 /**
- * SOURCE : https://developer.android.com/training/data-storage/sqlite <- Manuel d'introduction à la magie
+ * SOURCE : https://developer.android.com/training/data-storage/sqlite
  */
 public abstract class BaseDao<T extends BaseEntity>  implements BaseColumns {
     private final DataBaseHelper dbHelper;

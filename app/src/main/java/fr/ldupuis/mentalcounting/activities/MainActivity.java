@@ -8,15 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import fr.ldupuis.mentalcounting.R;
 
-/**
- * Class générant le menu principal, permet à l'utilisateur de choisir la difficulté du jeu, ou de voir ses scores
- */
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     * Initialisation du menu principal, des boutons et des listeners
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,17 +24,12 @@ public class MainActivity extends AppCompatActivity {
         scoreButton.setOnClickListener(view -> openScore());
     }
 
-    /**
-     * Ouvre l'activité des scores
-     */
+
     private void openScore() {
         Intent openScore = new Intent(this, ScoreActivity.class);
         startActivity(openScore);
     }
 
-    /**
-     * Ouvre l'activité du choix de difficulté
-     */
     private void openDifficulty() {
         Intent open_Difficulty = new Intent(this, DifficultyActivity.class);
         startActivity(open_Difficulty);
