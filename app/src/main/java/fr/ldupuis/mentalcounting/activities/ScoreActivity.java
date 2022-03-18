@@ -8,9 +8,17 @@ import android.widget.Button;
 
 import fr.ldupuis.mentalcounting.R;
 
+/**
+ * Class de score, permet à l'utilisateur de consulter ses scores.
+ * Actuellement un placeholder, base de données non mise en place
+ * Ne fonctionne pas
+ */
 public class ScoreActivity extends AppCompatActivity {
 
-
+    /**
+     * Initialisation de la page des scores, du bouton et du listener
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

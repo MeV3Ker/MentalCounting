@@ -8,8 +8,15 @@ import android.widget.Button;
 
 import fr.ldupuis.mentalcounting.R;
 
+/**
+ * Class permettant à l'utilisateur de choisir sa difficulté. Cette dernière est passée en Extra.
+ */
 public class DifficultyActivity extends AppCompatActivity {
 
+    /**
+     * Initialisation de la page de choix des difficultés, des boutons et des listeners
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,18 +34,27 @@ public class DifficultyActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Ouvre l'activité de jeu en mode difficile
+     */
     private void openMentalCountingHard(){
         Intent open_MentalCounting = new Intent(this, MentalCounting.class);
         open_MentalCounting.putExtra("IS_HARD", true);
         startActivity(open_MentalCounting);
     }
 
+    /**
+     * Ouvre l'activité de jeu en mode facile
+     */
     private void openMentalCountingEasy(){
         Intent open_MentalCounting = new Intent(this, MentalCounting.class);
         open_MentalCounting.putExtra("IS_HARD", false);
         startActivity(open_MentalCounting);
     }
 
+    /**
+     * Retourne au menu principal
+     */
     private void previousPage(){
         finish();
     }

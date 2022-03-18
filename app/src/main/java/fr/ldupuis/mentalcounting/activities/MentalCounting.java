@@ -21,13 +21,23 @@ import android.widget.TextView;
 import fr.ldupuis.mentalcounting.R;
 import fr.ldupuis.mentalcounting.models.EasyOperationModel;
 import fr.ldupuis.mentalcounting.models.HardOperationModel;
+import fr.ldupuis.mentalcounting.models.exceptions.EmptyOperatorException;
 import fr.ldupuis.mentalcounting.models.exceptions.EmptyResultException;
 import fr.ldupuis.mentalcounting.services.easyOperation.EasyOperationGenerationService;
 import fr.ldupuis.mentalcounting.services.hardOperation.HardOperationGenerationService;
 
+/**
+ * Class de jeu, permet à l'utilisateur de jouer au jeu mental counting
+ */
 public class MentalCounting extends AppCompatActivity {
     private TextView displayOperation;
+    private final static int EASY_UPPERBOUND = 12; //Valeur MAX des opération facile
 
+    /**
+     * Initialisation des boutons et des listener.
+     * Fait appel, en fonction de la difficulté passée en extra, aux services de génération et de solutions. Gère l'affichage des messages.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +51,8 @@ public class MentalCounting extends AppCompatActivity {
         //Recuperation zone de texte
         displayOperation = findViewById(R.id.display_Operation);
 
-        //Effacer les textes/message
-        Button nextOperation = findViewById(R.id.next_button);
+        //Effacer les textes, messages et boutons
+        Button nextOperation = findViewById(R.id.next_button);// Nécessaire ici car il doit être effacé
         nextOperation.setVisibility(View.GONE);
 
         TextView correctMessage = findViewById(R.id.display_correct_answer);
@@ -53,12 +63,12 @@ public class MentalCounting extends AppCompatActivity {
         TextView errorMessage = findViewById(R.id.error_message);
         errorMessage.setVisibility(View.GONE);
 
-        //init button
+        //Initialisation des boutons
         Button mainMenuButton = findViewById(R.id.main_menu_button);
         Button submitAnswerButton = findViewById(R.id.submit_button);
-        Button nextOperationButton = findViewById(R.id.next_button);
 
-        //init button listener
+
+        //Initialisation des listener
         mainMenuButton.setOnClickListener(view -> openMainMenu());
         nextOperation.setOnClickListener(view -> nextOperation(isHard));
 
@@ -74,7 +84,7 @@ public class MentalCounting extends AppCompatActivity {
             submitAnswerButton.setOnClickListener(view -> hardResultControl(generatedHardOperationModel, getStringResult(submittedResult) ));
         }
         else{
-            EasyOperationGenerationService generatedEasyOperation = new EasyOperationGenerationService();
+            EasyOperationGenerationService generatedEasyOperation = new EasyOperationGenerationService(12);
             EasyOperationModel generatedEasyOperationModel = new EasyOperationModel(generatedEasyOperation);
             writeEasyOperationText(generatedEasyOperationModel);
 
@@ -84,8 +94,11 @@ public class MentalCounting extends AppCompatActivity {
 
     }
 
-
-    //Récupère le résultat saisi par l'utilisateur et le converti en String
+    /**
+     * Récupère le résultat saisi par l'utilisateur et le converti en String
+     * @param submittedResult Résultat saisi par l'utilisateur de type CharSequence
+     * @return Résultat saisi par l'utilisateur de type String
+     */
     private String getStringResult(TextView submittedResult) {
         String resultToString;
 
@@ -94,9 +107,29 @@ public class MentalCounting extends AppCompatActivity {
         return resultToString;
     }
 
-    //Vérifie si le résultat est bon
+    /**
+     * Vérifie si le résultat saisi par l'utilisateur est bon pour une opération difficile.
+     * Affiche un message d'erreur si l'utilisateur ne tape rien et rentre la réponse.
+     * @param hardModel Données de l'opération générée
+     * @param resultString Résultat saisi par l'utilisateur en String
+     */
     private void hardResultControl(HardOperationModel hardModel, String resultString) {
-        int correctAnswer = computeHard(hardModel);
+        int correctAnswer;
+        try {
+            correctAnswer = computeHard(hardModel);
+        }catch (EmptyOperatorException e){
+            Button submit = findViewById(R.id.submit_button);
+            Button nextButton = findViewById(R.id.next_button);
+
+            TextView errorMessage = findViewById(R.id.error_message);
+            errorMessage.setText(e.getMessage());
+            errorMessage.setVisibility(View.VISIBLE);
+
+            submit.setVisibility(View.GONE);
+            nextButton.setVisibility(View.VISIBLE);
+            return;
+        }
+
 
         try {
             affichageMessage(isEqual(hardModel, resultString), correctAnswer);
@@ -110,14 +143,46 @@ public class MentalCounting extends AppCompatActivity {
 
             submit.setVisibility(View.GONE);
             nextButton.setVisibility(View.VISIBLE);
+        }catch (EmptyOperatorException e){
 
+            Button submit = findViewById(R.id.submit_button);
+            Button nextButton = findViewById(R.id.next_button);
+
+            TextView errorMessage = findViewById(R.id.error_message);
+            errorMessage.setText(e.getMessage());
+            errorMessage.setVisibility(View.VISIBLE);
+
+            submit.setVisibility(View.GONE);
+            nextButton.setVisibility(View.VISIBLE);
         }
     }
 
-    //Vérifie si le résultat est bon
+    /**
+     * Vérifie si le résultat saisi par l'utilisateur est bon pour une opération facile.
+     * Affiche un message d'erreur si l'utilisateur ne tape rien et rentre la réponse.
+     * Affixhe les messages d'erreurs programme
+     * @param easyModel Données de l'opération générée
+     * @param resultString Résultat saisi par l'utilisateur en String
+     */
     private void easyResultControl(EasyOperationModel easyModel, String resultString){
+        int correctAnswer;
 
-        int correctAnswer = compute(easyModel);
+        try {
+            correctAnswer = compute(easyModel);
+        }catch (EmptyOperatorException e){
+
+            Button submit = findViewById(R.id.submit_button);
+            Button nextButton = findViewById(R.id.next_button);
+
+            TextView errorMessage = findViewById(R.id.error_message);
+            errorMessage.setText(e.getMessage());
+            errorMessage.setVisibility(View.VISIBLE);
+
+            submit.setVisibility(View.GONE);
+            nextButton.setVisibility(View.VISIBLE);
+
+            return;
+        }
 
         try {
             affichageMessage(isEqual(easyModel, resultString), correctAnswer);
@@ -132,11 +197,26 @@ public class MentalCounting extends AppCompatActivity {
             submit.setVisibility(View.GONE);
             nextButton.setVisibility(View.VISIBLE);
 
+        }catch (EmptyOperatorException e){
+            Button submit = findViewById(R.id.submit_button);
+            Button nextButton = findViewById(R.id.next_button);
+
+            TextView errorMessage = findViewById(R.id.error_message);
+            errorMessage.setText(e.getMessage());
+            errorMessage.setVisibility(View.VISIBLE);
+
+            submit.setVisibility(View.GONE);
+            nextButton.setVisibility(View.VISIBLE);
         }
 
     }
 
-    //Affiche les messages d'erreur/reussite et les boutons pour passer au calcul suivant
+    /**
+     * Affiche un message en fonction de la réponse de l'utilisateur.
+     * Si la réponse est fausse, affiche la bonne réponse.
+     * @param answerCorrect Valeur de vérité de la réponse de l'utilisateur (La réponse est bonne ?)
+     * @param correctResult Résultat réel du calcul généré
+     */
     private void affichageMessage(boolean answerCorrect, int correctResult){
 
         Button submit = findViewById(R.id.submit_button);
@@ -149,18 +229,18 @@ public class MentalCounting extends AppCompatActivity {
 
         if(answerCorrect){
             correctMessage.setVisibility(View.VISIBLE);
-
         }
         else{
-
             String text = getString(R.string.incorrect_answer, correctResult);
             incorrectMessage.setText(text);
             incorrectMessage.setVisibility(View.VISIBLE);
         }
-
     }
 
-    //Passe au calcul suivant
+    /**
+     * Renvoi vers cette activité pour générer un nouveau calcul, garde en mémoire la difficulté.
+     * @param difficulty Valeur de difficulté choisi par l'utilisateur, sert de mémoire pour la prochaine opération.
+     */
     private void nextOperation(boolean difficulty) {
         Intent nextOperation = new Intent(this, MentalCounting.class);
         nextOperation.putExtra("IS_HARD", difficulty);
@@ -170,14 +250,19 @@ public class MentalCounting extends AppCompatActivity {
     }
 
 
-    // Redirige vers le menu principal
+    /**
+     * Redirige vers le menu principal
+     */
     private void openMainMenu() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
 
-    //Ecrit une opération à 2 membres
+    /**
+     * Ecrit dans la zone "Operation" le calcul facile généré aléatoirement
+     * @param easyModel Contient les données de l'opération générée
+     */
     private void writeEasyOperationText(EasyOperationModel easyModel){
         String operationText;
         operationText = getString(
@@ -189,13 +274,16 @@ public class MentalCounting extends AppCompatActivity {
         this.displayOperation.setText(operationText);
     }
 
-    //Ecrit une opération à 3 membres
+    /**
+     * Ecrit dans la zone "Operation" le calcul difficile généré aléatoirement
+     * @param hardModel Contient les données de l'opération générée
+     */
     private void writeHardOperationText(HardOperationModel hardModel){
         String operationText;
         operationText = getString(
                 R.string.hard_operationTemplate,
                 hardModel.getFirstOperationMember(),
-                hardModel.getFirstOperator(),
+                hardModel.getOperator(),
                 hardModel.getSecondOperationMember(),
                 hardModel.getSecondOperator(),
                 hardModel.getThirdOperationMember()
@@ -205,6 +293,11 @@ public class MentalCounting extends AppCompatActivity {
 
     }
 
+    /**
+     * Gère les boutons dans le menu, renvoi à la page des score
+     * @param item bouton sur lequel on a appuyé (bouton "scores")
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
 
@@ -218,6 +311,11 @@ public class MentalCounting extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Gère le menu dans ka barre de tâches, affiche le menu une fois cliqué sur l'icône
+     * @param menu bouton sur lequel on a appuyé (bouton "menu")
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
