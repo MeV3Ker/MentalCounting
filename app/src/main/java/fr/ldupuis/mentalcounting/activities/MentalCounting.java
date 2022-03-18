@@ -3,11 +3,6 @@ package fr.ldupuis.mentalcounting.activities;
 import static fr.ldupuis.mentalcounting.services.easyOperation.EasyOperationSolutionService.compute;
 import static fr.ldupuis.mentalcounting.services.hardOperation.HardOperationSolutionService.computeHard;
 import static fr.ldupuis.mentalcounting.services.hardOperation.HardOperationSolutionService.isEqual;
-import static fr.ldupuis.mentalcounting.services.easyOperation.EasyOperationSolutionService.isEqual;
-
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import fr.ldupuis.mentalcounting.R;
 import fr.ldupuis.mentalcounting.models.EasyOperationModel;
@@ -90,6 +88,7 @@ public class MentalCounting extends AppCompatActivity {
 
             submitAnswerButton.setOnClickListener(view -> easyResultControl(generatedEasyOperationModel, getStringResult(submittedResult)));
         }
+
 
 
     }

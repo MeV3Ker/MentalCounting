@@ -3,7 +3,6 @@ package fr.ldupuis.mentalcounting.models;
 
 import androidx.annotation.NonNull;
 
-
 import fr.ldupuis.mentalcounting.services.hardOperation.HardOperationGenerationService;
 
 /**

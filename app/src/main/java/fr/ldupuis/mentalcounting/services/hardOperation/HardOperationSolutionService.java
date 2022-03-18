@@ -3,7 +3,6 @@ package fr.ldupuis.mentalcounting.services.hardOperation;
 
 import androidx.annotation.NonNull;
 
-
 import fr.ldupuis.mentalcounting.models.HardOperationModel;
 import fr.ldupuis.mentalcounting.models.exceptions.EmptyOperatorException;
 import fr.ldupuis.mentalcounting.models.exceptions.EmptyResultException;

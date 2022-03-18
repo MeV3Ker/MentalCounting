@@ -3,7 +3,6 @@ package fr.ldupuis.mentalcounting.services.dao;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import fr.ldupuis.mentalcounting.models.EasyOperationModel;
 import fr.ldupuis.mentalcounting.models.HardOperationModel;
 
 /**
