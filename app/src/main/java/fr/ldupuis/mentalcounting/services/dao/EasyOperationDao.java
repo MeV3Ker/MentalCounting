@@ -1,14 +1,24 @@
 package fr.ldupuis.mentalcounting.services.dao;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 
 import fr.ldupuis.mentalcounting.models.EasyOperationModel;
 
-public class OperationDao extends BaseDao<EasyOperationModel>{
+/**
+ * Class permettant de lire et d'inscrire des données dans le BDD (Magie)
+ */
+public class EasyOperationDao extends BaseDao<EasyOperationModel>{
 
-    public OperationDao(DataBaseHelper helper) {
-        super(helper);
+    public static final int FIRST = 0;
+    public static final int SECOND = 0;
+    public static final String OPERATOR = "operator";
+    public static final String TABLE_NAME = "easy_operation";
+
+
+    public EasyOperationDao(Context helper) {
+        super(new SampleDbHelper(helper));
     }
 
     @Override

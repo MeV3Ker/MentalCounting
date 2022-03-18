@@ -3,9 +3,9 @@ package fr.ldupuis.mentalcounting.models.exceptions;
 import androidx.annotation.Nullable;
 
 /**
- * Class de l'exception en cas de saisi vide par l'utilisateur
+ * Class de l'exception généré aléatoirment d'opérateur NULL
  */
-public class EmptyResultException extends Exception{
+public class EmptyOperatorException extends Exception {
 
     private String message;
 
@@ -13,7 +13,7 @@ public class EmptyResultException extends Exception{
      * Constructeur unique de l'exception
      * @param errorMessage Message d'erreur à afficher à l'utilisateur (hardcoded)
      */
-    public EmptyResultException(String errorMessage){
+    public EmptyOperatorException(String errorMessage){
         super(errorMessage);
     }
 
